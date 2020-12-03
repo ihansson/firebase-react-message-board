@@ -1,1 +1,1 @@
-export const collectIdsAndDocs = doc => ({ id: doc.id, ...doc.data() })
+export const collectIdsAndDocs = (doc) => ({ id: doc.id, ...doc.data() });

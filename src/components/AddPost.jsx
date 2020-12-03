@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import {firestore} from "../firebase";
-import {auth} from "../firebase";
+import React, { Component } from "react";
+import { auth, firestore } from "../firebase";
 
 class AddPost extends Component {
-  state = { title: '', content: '' };
+  state = { title: "", content: "" };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const { title, content } = this.state;
-    const { uid, displayName, email, photoURL} = auth.currentUser || {}
+    const { uid, displayName, email, photoURL } = auth.currentUser || {};
 
     const post = {
       title,
@@ -28,14 +27,13 @@ class AddPost extends Component {
       favorites: 0,
       comments: 0,
       createdAt: new Date(),
-    }
+    };
 
-    firestore.collection('posts').add(post)
+    firestore.collection("posts").add(post);
 
-    this.setState({ title: '', content: '' });
+    this.setState({ title: "", content: "" });
 
-    if(!uid) return null;
-
+    if (!uid) return null;
   };
 
   render() {
