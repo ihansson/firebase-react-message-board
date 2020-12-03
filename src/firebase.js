@@ -50,6 +50,8 @@ export const createUserProfileDocument = async (user, additionalData) => {
         }
     }
 
+    return getUserDocument(user.uid);
+
 }
 
 export const getUserDocument = async (uid) => {
