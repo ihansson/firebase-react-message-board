@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import moment from 'moment';
-import {signOut} from "../firebase";
+import moment from "moment";
+import { signOut } from "../firebase";
+
+import { Link } from "react-router-dom";
 
 const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
   return (
@@ -9,7 +11,9 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
       <div className="CurrentUser--profile">
         {photoURL && <img src={photoURL} alt={displayName} />}
         <div className="CurrentUser--information">
-          <h2>{displayName}</h2>
+          <Link to="/profile">
+            <h2>{displayName}</h2>
+          </Link>
           <p className="email">{email}</p>
           <p className="created-at">{moment(createdAt).calendar()}</p>
         </div>
@@ -23,9 +27,9 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
 };
 
 CurrentUser.defaultProps = {
-  displayName: 'Bill Murray',
-  email: 'billmurray@mailinator.com',
-  photoURL: 'https://www.fillmurray.com/300/300',
+  displayName: "Bill Murray",
+  email: "billmurray@mailinator.com",
+  photoURL: "https://www.fillmurray.com/300/300",
   createdAt: new Date(),
 };
 
